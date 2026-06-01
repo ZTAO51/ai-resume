@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 简历优化</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f0f4ff 0%, #fafafa 100%);
+      color: #1e293b;
+      padding: 48px 20px 60px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* 标题 */
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+
+    /* 卡片 */
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(15, 23, 42, 0.06);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 20px;
+    }
+
+    /* 表单 */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #1e293b;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 200px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    /* 按钮 */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: #3b82f6;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn:hover {
+      background: #2563eb;
+    }
+
+    .btn:active {
+      transform: scale(0.99);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* 结果区 */
+    #result-section {
+      display: none;
+    }
+
+    #result-section.visible {
+      display: block;
+    }
+
+    #result {
+      padding: 18px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      min-height: 60px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      color: #334155;
+    }
+
+    #result.error {
+      color: #dc2626;
+      background: #fef2f2;
+      border-color: #fecaca;
+    }
+
+    #result.loading {
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>AI 简历优化</h1>
+      <p>针对目标岗位，一键优化你的简历</p>
+    </header>
+
+    <main>
+      <!-- 输入区 -->
+      <section class="card">
+        <div class="card-title">填写信息</div>
+
+        <div class="form-group">
+          <label for="job-title">求职岗位</label>
+          <input
+            type="text"
+            id="job-title"
+            placeholder="例如：前端开发工程师"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="resume">原始简历</label>
+          <textarea
+            id="resume"
+            placeholder="请粘贴你的简历内容..."
+          ></textarea>
+        </div>
+
+        <button class="btn" id="optimize-btn">开始优化</button>
+      </section>
+
+      <!-- 结果区 -->
+      <section class="card" id="result-section">
+        <div class="card-title">优化结果</div>
+        <div id="result"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "ai-resume",
+  "version": "1.0.0",
+  "description": "AI 简历优化工具",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  }
+}
